@@ -8,6 +8,7 @@ import {
   Animated,
   PanResponder,
   TouchableHighlight,
+  ScrollView,
 } from 'react-native';
 import RadialGradient from 'react-native-radial-gradient';
 import CalendarPicker from 'react-native-calendar-picker';
@@ -252,7 +253,9 @@ class App extends Component {
               }}
             />
           </View>
-          <View style={{flex: 1}}>
+          <ScrollView
+            style={{flex: 1, paddingBottom: 50}}
+            scrollEnabled={this.state.pos}>
             {this.state.range.map((u, i) => {
               return (
                 <View style={{marginVertical: 5}}>
@@ -364,7 +367,7 @@ class App extends Component {
                 </View>
               );
             })}
-          </View>
+          </ScrollView>
         </Animated.View>
         <View style={{position: 'absolute', bottom: 0, zIndex: 20}}>
           <Tabbar />
