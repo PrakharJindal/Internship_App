@@ -9,7 +9,7 @@ import Svg, {Path} from 'react-native-svg';
 
 const width = Dimensions.get('screen').width;
 
-class SignUpStep2Screen extends Component {
+class SignUpStep3Screen extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -58,13 +58,10 @@ class SignUpStep2Screen extends Component {
             height: '100%',
           }}>
           <View style={{width: '80%', alignSelf: 'center', marginTop: 30}}>
-            <Text style={{fontSize: 16, color: '#027E97'}}>Step 2</Text>
+            <Text style={{fontSize: 16, color: '#027E97'}}>Step 3</Text>
             <View style={{marginTop: 5, flexDirection: 'row'}}>
               <View
-                style={{height: 5, width: '67%', backgroundColor: '#027E97'}}
-              />
-              <View
-                style={{height: 5, width: '33%', backgroundColor: '#D5E9F4'}}
+                style={{height: 5, width: '100%', backgroundColor: '#027E97'}}
               />
             </View>
           </View>
@@ -76,7 +73,7 @@ class SignUpStep2Screen extends Component {
               alignSelf: 'center',
               fontWeight: 'bold',
             }}>
-            Build your profile
+            Contact Details
           </Text>
           <View
             style={{
@@ -89,26 +86,14 @@ class SignUpStep2Screen extends Component {
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <Svg width="159" height="158" viewBox="0 0 159 158" fill="none">
-              <Path
-                d="M0 17.5556V140.444C0 145.1 1.8613 149.566 5.17445 152.858C8.48759 156.15 12.9812 158 17.6667 158H141.333C151.05 158 159 150.1 159 140.444V17.5556C159 7.9 151.05 0 141.333 0H17.6667C12.9812 0 8.48759 1.8496 5.17445 5.1419C1.8613 8.43421 0 12.8995 0 17.5556ZM106 52.6667C106 67.2378 94.1633 79 79.5 79C64.8367 79 53 67.2378 53 52.6667C53 38.0956 64.8367 26.3333 79.5 26.3333C94.1633 26.3333 106 38.0956 106 52.6667ZM26.5 122.889C26.5 105.333 61.8333 95.6778 79.5 95.6778C97.1667 95.6778 132.5 105.333 132.5 122.889V131.667H26.5V122.889Z"
-                fill="black"
-                fillOpacity="0.1"
-              />
-            </Svg>
-            <Text
-              style={{
-                position: 'absolute',
-                textAlign: 'center',
-                fontSize: 18,
-                color: 'rgba(0, 0, 0, 0.43)',
-                fontWeight: 'bold',
-              }}>
-              Upload {'\n'}Picture/Video
-            </Text>
+            <Image
+              source={require('../assets/img.jpg')}
+              resizeMode="contain"
+              style={{width: '80%', height: '80%', borderRadius: 14}}
+            />
           </View>
           <TextInput
-            placeholder="Registration Number"
+            placeholder="Contact Number"
             value={this.state.email}
             onChangeText={(val) => {
               this.setState({email: val});
@@ -126,7 +111,25 @@ class SignUpStep2Screen extends Component {
             }}
           />
           <TextInput
-            placeholder="Mention area of Expertise"
+            placeholder="City of Residence"
+            value={this.state.email}
+            onChangeText={(val) => {
+              this.setState({email: val});
+            }}
+            placeholderTextColor="rgba(0, 0, 0, 0.25)"
+            style={{
+              color: '#027E97',
+              fontSize: 14,
+              width: '70%',
+              borderBottomColor: 'rgba(2, 126, 151, 0.33)',
+              borderBottomWidth: 2,
+              height: 'auto',
+              alignSelf: 'center',
+              marginTop: 20,
+            }}
+          />
+          <TextInput
+            placeholder="Country"
             value={this.state.email}
             onChangeText={(val) => {
               this.setState({email: val});
@@ -160,23 +163,13 @@ class SignUpStep2Screen extends Component {
                 color: 'white',
                 fontSize: 16,
               }}>
-              Submit
+              Complete
             </Text>
           </Button>
-          <Text
-            style={{
-              width: '100%',
-              textAlign: 'center',
-              color: 'rgba(0, 0, 0, 0.25)',
-              fontSize: 14,
-              marginTop: 10,
-            }}>
-            Just one more step to complete{'\n'}your registration process!
-          </Text>
         </View>
       </View>
     );
   }
 }
 
-export default SignUpStep2Screen;
+export default SignUpStep3Screen;
