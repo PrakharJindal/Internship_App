@@ -186,6 +186,7 @@ class WelcomeScreen extends Component {
               backgroundColor: '#FF7A59',
               alignSelf: 'center',
               marginTop: 40,
+              elevation: 10,
             }}>
             <Text
               style={{

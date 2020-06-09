@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
+import CalendarScreen from './Screens.js/Calendar';
 import WelcomeScreen from './Screens.js/WelcomeScreen';
+import SignUpStep1Screen from './Screens.js/SignUpStep1Screen';
 
 class App extends Component {
   constructor(props) {
@@ -8,7 +10,9 @@ class App extends Component {
   }
 
   render() {
-    return <WelcomeScreen />;
+    // return <WelcomeScreen />;
+    // return <CalendarScreen />;
+    return <SignUpStep1Screen />;
   }
 }
 
