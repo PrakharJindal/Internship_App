@@ -9,6 +9,7 @@ import {
   PanResponder,
   TouchableHighlight,
   ScrollView,
+  FlatList,
 } from 'react-native';
 import RadialGradient from 'react-native-radial-gradient';
 import CalendarPicker from 'react-native-calendar-picker';
@@ -26,11 +27,13 @@ const width = Dimensions.get('screen').width;
 class App extends Component {
   constructor(props) {
     super(props);
+    this.exampleRef = React.createRef();
     this.state = {
       selectedStartDate: null,
       selectedEndDate: null,
-      selectedIndex: 1,
+      selectedIndex: 0,
       pos: false,
+      months: [],
       range: [
         // 'Thursday, 1st',
         // 'Friday, 2nd',
@@ -39,17 +42,67 @@ class App extends Component {
         // 'Monday, 5th',
       ],
       time: ['09:00', '10:00', '11:00', '12:00', '01:00', '02:00'],
+      daysLable: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
       value: 0,
       timeValue: '09:00',
     };
   }
 
-  val = new Animated.Value(height * 0.55);
+  val = new Animated.Value(height * 0.58);
 
   updateIndex = (selectedIndex) => {
     this.setState({selectedIndex});
   };
 
+  setMonth = async (i) => {
+    var index = this.state.months.indexOf(i);
+    var index2 = this.state.selectedIndex;
+    console.log(index2, ' --- ', index);
+    if (index > index2) {
+      while (index2 < index) {
+        await this.exampleRef.current.handleOnPressNext();
+        console.log('changing');
+        index2++;
+      }
+      this.setState({
+        selectedIndex: index2,
+      });
+    } else if (index < index2) {
+      while (index2 > index) {
+        await this.exampleRef.current.handleOnPressPrevious();
+        console.log('changing');
+        index2--;
+      }
+      this.setState({
+        selectedIndex: index2,
+      });
+    }
+    console.log(index2, ' --- ', index);
+  };
+
+  getMonths = () => {
+    var months = moment.months();
+    var coming12Months = months
+      .concat(months.slice(0, moment().month()))
+      .slice(-12);
+    this.setState({months: coming12Months});
+  };
+
+  today = moment();
+  day = this.today.clone().startOf('month');
+  customDatesStyles = [];
+
+  componentDidMount = () => {
+    this.getMonths();
+    while (this.day.add(1, 'day').isSame(this.today, 'month')) {
+      this.customDatesStyles.push({
+        date: this.day.clone(),
+        style: {},
+        textStyle: {color: '#015A6B', fontSize: 18}, // sets the font color
+        containerStyle: [], // extra styling for day container
+      });
+    }
+  };
   panResponder = PanResponder.create({
     onStartShouldSetPanResponder: (evt, gestureState) => true,
     onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
@@ -61,7 +114,7 @@ class App extends Component {
     },
     onPanResponderMove: (e, gestureState) => {
       console.log(gestureState.dy, ' ', height * 0.25);
-      if (gestureState.moveY <= height * 0.55) {
+      if (gestureState.moveY <= height * 0.58) {
         if (!this.state.pos || gestureState.dy > 0) {
           this.val.setValue(gestureState.dy);
         }
@@ -75,7 +128,7 @@ class App extends Component {
           ? this.val.setValue(0)
           : this.val.setValue((-1 * height) / 2);
         this.setState({pos: true});
-      } else if (gestureState.moveY <= height * 0.55) {
+      } else if (gestureState.moveY <= height * 0.58) {
         console.log('in2');
         this.state.pos ? this.val.setValue(height / 2) : this.val.setValue(0);
         this.setState({pos: false});
@@ -92,7 +145,6 @@ class App extends Component {
       this.setState({
         range,
       });
-      console.log(range);
     }
   };
 
@@ -115,7 +167,6 @@ class App extends Component {
   };
 
   render() {
-    const {selectedStartDate, selectedEndDate} = this.state;
     const minDate = new Date(1950, 1, 1);
     const maxDate = new Date(2050, 12, 31);
     return (
@@ -128,7 +179,58 @@ class App extends Component {
           stops={[0.0, 0.2, 0.75]}
           center={[100, 100]}
           radius={120}>
+          <FlatList
+            data={this.state.months}
+            horizontal
+            renderItem={({item}) => {
+              return (
+                <TouchableHighlight
+                  style={{paddingHorizontal: 20}}
+                  onPress={() => {
+                    this.setMonth(item);
+                  }}>
+                  <Text
+                    style={{
+                      fontSize: 30,
+                      color: '#027E97',
+                      fontWeight: 'bold',
+                    }}>
+                    {item}
+                  </Text>
+                </TouchableHighlight>
+              );
+            }}
+          />
+          <FlatList
+            data={this.state.daysLable}
+            scrollEnabled={false}
+            horizontal
+            style={{marginHorizontal: 10, marginTop: 20}}
+            renderItem={({item}) => {
+              return (
+                <TouchableHighlight
+                  style={{
+                    width: width / 7 - 20 / 7,
+                  }}
+                  onPress={() => {
+                    this.setMonth(item);
+                  }}>
+                  <Text
+                    style={{
+                      fontSize: 22,
+                      color: '#027E97',
+                      fontWeight: '300',
+                      width: '100%',
+                      textAlign: 'center',
+                    }}>
+                    {item}
+                  </Text>
+                </TouchableHighlight>
+              );
+            }}
+          />
           <CalendarPicker
+            ref={this.exampleRef}
             startFromMonday={false}
             allowRangeSelection={true}
             minDate={minDate}
@@ -139,6 +241,8 @@ class App extends Component {
               backgroundColor: '#FF7A59',
               borderRadius: 11,
             }}
+            nextTitleStyle={{height: 0}}
+            previousTitleStyle={{height: 0}}
             todayTextStyle={{
               borderRadius: 11,
               borderWidth: 1.5,
@@ -166,9 +270,54 @@ class App extends Component {
               paddingVertical: -20,
             }}
             weekdays={['S', 'M', 'T', 'W', 'T', 'F', 'S']}
-            dayOfWeekStyles={{fontSize: 30}}
             dayLabelsWrapper={{
-              height: 'auto',
+              height: 0,
+              borderBottomWidth: 0,
+              borderTopWidth: 0,
+              backgroundColor: 'transaprent',
+              maxHeight: 0,
+              width: 2,
+              marginBottom: -25,
+            }}
+            // dayOfWeekStyles={{
+            //   0: {
+            //     fontSize: 22,
+            //     color: '#027E97',
+            //   },
+            //   1: {
+            //     fontSize: 22,
+            //     color: '#027E97',
+            //   },
+            //   2: {
+            //     fontSize: 22,
+            //     color: '#027E97',
+            //   },
+            //   3: {
+            //     fontSize: 22,
+            //     color: '#027E97',
+            //   },
+            //   4: {
+            //     fontSize: 22,
+            //     color: '#027E97',
+            //   },
+            //   5: {
+            //     fontSize: 22,
+            //     color: '#027E97',
+            //   },
+            //   6: {
+            //     fontSize: 22,
+            //     color: '#027E97',
+            //   },
+            //   7: {
+            //     fontSize: 22,
+            //     color: '#027E97',
+            //   },
+            // }}
+            // customDatesStyles={this.customDatesStyles}
+            showDayStragglers
+            monthYearHeaderWrapperStyle={{
+              height: 0,
+              width: 0,
             }}
           />
           <View
