@@ -1,9 +1,10 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
-import {View, Text, TextInput} from 'react-native';
+import {View, Text, TextInput, Image} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {Button} from 'native-base';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import Svg from 'react-native-svg';
 
 class SignUpStep1Screen extends Component {
   constructor(props) {
@@ -50,6 +51,15 @@ class SignUpStep1Screen extends Component {
             }}>
             Hello Doctor!
           </Text>
+          <Image
+            source={require('../assets/pic2.png')}
+            style={{
+              alignSelf: 'center',
+              transform: [{scale: 0.9}],
+            }}
+            resizeMode="cover"
+            resizeMethod="scale"
+          />
           <TextInput
             placeholder="First Name"
             value={this.state.email}
@@ -65,7 +75,7 @@ class SignUpStep1Screen extends Component {
               borderBottomWidth: 2,
               height: 'auto',
               alignSelf: 'center',
-              marginTop: 30,
+              // marginTop: 30,
             }}
           />
           <TextInput

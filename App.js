@@ -14,9 +14,9 @@ class App extends Component {
   render() {
     // return <WelcomeScreen />;
     // return <CalendarScreen />;
-    // return <SignUpStep1Screen />;
+    return <SignUpStep1Screen />;
     // return <SignUpStep2Screen />;
-    return <SignUpStep3Screen />;
+    // return <SignUpStep3Screen />;
   }
 }
 
