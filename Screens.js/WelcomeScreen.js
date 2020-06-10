@@ -25,8 +25,6 @@ class WelcomeScreen extends Component {
           colors={[
             'rgba(2, 126, 151, 0)',
             'rgba(2, 126, 151, 0)',
-            // 'rgba(2, 126, 151, 0)',
-            // 'rgba(2, 126, 151, 0)',
             'rgba(2, 126, 151, 0.31)',
           ]}
           style={{flex: 1, opacity: 0.4}}
@@ -43,7 +41,7 @@ class WelcomeScreen extends Component {
               fontSize: 45,
               fontWeight: 'bold',
               color: '#027E97',
-              marginTop: 60,
+              marginTop: 40,
               width: '100%',
               textAlign: 'center',
             }}>
@@ -179,6 +177,9 @@ class WelcomeScreen extends Component {
             />
           </View>
           <Button
+            onPress={() => {
+              this.props.navigation.navigate('Calendar');
+            }}
             style={{
               width: 131,
               height: 46,
@@ -199,6 +200,9 @@ class WelcomeScreen extends Component {
             </Text>
           </Button>
           <Text
+            onPress={() => {
+              this.props.navigation.navigate('SignUpStep1Screen');
+            }}
             style={{
               width: '100%',
               textAlign: 'center',

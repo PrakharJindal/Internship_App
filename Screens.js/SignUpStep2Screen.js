@@ -144,6 +144,9 @@ class SignUpStep2Screen extends Component {
             }}
           />
           <Button
+            onPress={() => {
+              this.props.navigation.navigate('SignUpStep3Screen');
+            }}
             style={{
               width: 131,
               height: 46,

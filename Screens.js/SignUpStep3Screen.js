@@ -147,6 +147,9 @@ class SignUpStep3Screen extends Component {
             }}
           />
           <Button
+            onPress={() => {
+              this.props.navigation.navigate('Calendar');
+            }}
             style={{
               width: 131,
               height: 46,

@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
-import CalendarScreen from './Screens.js/Calendar';
-import WelcomeScreen from './Screens.js/WelcomeScreen';
-import SignUpStep1Screen from './Screens.js/SignUpStep1Screen';
-import SignUpStep2Screen from './Screens.js/SignUpStep2Screen';
-import SignUpStep3Screen from './Screens.js/SignUpStep3Screen';
+import {NavigationContainer} from '@react-navigation/native';
+import Index from './Screens.js';
 
 class App extends Component {
   constructor(props) {
@@ -11,12 +8,16 @@ class App extends Component {
     this.state = {};
   }
 
+  componentDidMount = () => {
+    console.disableYellowBox = true;
+  };
+
   render() {
-    // return <WelcomeScreen />;
-    // return <CalendarScreen />;
-    return <SignUpStep1Screen />;
-    // return <SignUpStep2Screen />;
-    // return <SignUpStep3Screen />;
+    return (
+      <NavigationContainer>
+        <Index />
+      </NavigationContainer>
+    );
   }
 }
 

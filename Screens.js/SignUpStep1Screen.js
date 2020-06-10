@@ -19,8 +19,13 @@ class SignUpStep1Screen extends Component {
           start={{x: 0, y: 0}}
           end={{x: 1, y: 0}}
           useAngle
-          angle={120}
-          colors={['rgba(2, 126, 151, 0)', 'rgba(2, 126, 151, 0.31)']}
+          angle={100}
+          colors={[
+            'rgba(2, 126, 151, 0)',
+            'rgba(2, 126, 151, 0)',
+            'rgba(2, 126, 151, 0)',
+            'rgba(2, 126, 151, 0.31)',
+          ]}
           style={{flex: 1, opacity: 0.4}}
         />
         <View
@@ -29,6 +34,7 @@ class SignUpStep1Screen extends Component {
             flex: 1,
             width: '100%',
             height: '100%',
+            backgroundColor: 'transparent',
           }}>
           <View style={{width: '80%', alignSelf: 'center', marginTop: 30}}>
             <Text style={{fontSize: 16, color: '#027E97'}}>Step 1</Text>
@@ -138,7 +144,7 @@ class SignUpStep1Screen extends Component {
               flexDirection: 'row',
               justifyContent: 'space-around',
               alignSelf: 'center',
-              marginTop: 40,
+              marginTop: 30,
             }}>
             <EvilIcons
               name="sc-facebook"
@@ -157,6 +163,9 @@ class SignUpStep1Screen extends Component {
             />
           </View>
           <Button
+            onPress={() => {
+              this.props.navigation.navigate('SignUpStep2Screen');
+            }}
             style={{
               width: 131,
               height: 46,
@@ -173,10 +182,13 @@ class SignUpStep1Screen extends Component {
                 color: 'white',
                 fontSize: 16,
               }}>
-              SIGN IN
+              SIGN UP
             </Text>
           </Button>
           <Text
+            onPress={() => {
+              this.props.navigation.navigate('Welcome');
+            }}
             style={{
               width: '100%',
               textAlign: 'center',
@@ -184,7 +196,8 @@ class SignUpStep1Screen extends Component {
               fontSize: 14,
               marginTop: 10,
             }}>
-            No account ? <Text style={{color: '#FF7A59'}}>Sign Up</Text>
+            Already have an account?{' '}
+            <Text style={{color: '#FF7A59'}}>Sign In</Text>
           </Text>
         </View>
       </View>
