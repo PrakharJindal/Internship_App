@@ -262,12 +262,11 @@ export default Question1Screen;
 
 const styles = StyleSheet.create({
   btnStyle: {
-    // width: 'auto',
     alignSelf: 'center',
     borderRadius: 15,
     height: 39,
     marginTop: 20,
-    elevation: 0,
+    elevation: 10,
     justifyContent: 'center',
   },
   nextBtn: {
@@ -281,5 +280,6 @@ const styles = StyleSheet.create({
     marginTop: 35,
     marginLeft: 'auto',
     marginRight: '10%',
+    elevation: 10,
   },
 });
