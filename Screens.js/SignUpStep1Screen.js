@@ -58,7 +58,7 @@ class SignUpStep1Screen extends Component {
             Hello Doctor!
           </Text>
           <Image
-            source={require('../assets/pic2.png')}
+            source={require('../assets/pic.png')}
             style={{
               alignSelf: 'center',
               transform: [{scale: 0.9}],

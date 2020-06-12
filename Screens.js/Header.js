@@ -1,5 +1,6 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import Svg, {Path} from 'react-native-svg';
 import {Header, Right, Left, Body} from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -12,7 +13,9 @@ class Button extends Component {
   render() {
     return (
       <View>
-        <Header transparent androidStatusBarColor="transparent">
+        <Header
+          style={{backgroundColor: '#00000000', elevation: 0}}
+          androidStatusBarColor="transparent">
           <Left>
             <Ionicons
               name="ios-arrow-back"
