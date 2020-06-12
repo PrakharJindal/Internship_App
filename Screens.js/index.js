@@ -6,6 +6,7 @@ import SignUpStep1Screen from './SignUpStep1Screen';
 import SignUpStep2Screen from './SignUpStep2Screen';
 import SignUpStep3Screen from './SignUpStep3Screen';
 import Question1Screen from './Question1Screen';
+import Question1Screen2 from './Question1Screen2';
 import Question2Screen from './Question2Screen';
 const Stack = createStackNavigator();
 
@@ -19,6 +20,7 @@ class index extends Component {
     return (
       <Stack.Navigator headerMode="none">
         {/* <Stack.Screen name="Question1Screen" component={Question1Screen} /> */}
+        {/* <Stack.Screen name="Question1Screen2" component={Question1Screen2} /> */}
         <Stack.Screen name="Question2Screen" component={Question2Screen} />
         {/* <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="Calendar" component={CalendarScreen} />

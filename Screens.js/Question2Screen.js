@@ -1,24 +1,24 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
-import {View, Text, Image, StyleSheet, TextInput} from 'react-native';
+import {View, Text, Image, StyleSheet} from 'react-native';
 import RadialGradient from 'react-native-radial-gradient';
 import {Button} from 'native-base';
 import Svg, {Path} from 'react-native-svg';
+import {TouchableHighlight} from 'react-native-gesture-handler';
 
-class Question2Screen extends Component {
+class Question1Screen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedIndex: 2,
+      selectedSymptom: '',
+      symptomps1: ['Cough', 'Cold', 'COVID'],
+      symptomps2: ['Sore Throat', 'Influenza (Flu)'],
+      symptomps3: ['Prescription Refill', 'Urinary Tract Infection (UTI)'],
     };
   }
 
-  updateIndex(selectedIndex) {
-    this.setState({selectedIndex});
-  }
-
-  pressbtn = (selectedIndex) => {
-    this.setState({selectedIndex});
+  pressbtn = (selectedSymptom) => {
+    this.setState({selectedSymptom});
   };
 
   render() {
@@ -63,34 +63,152 @@ class Question2Screen extends Component {
                 marginRight: 30,
               }}
               resizeMode="contain"
-              source={require('../assets/pic3.png')}
+              source={require('../assets/pic4.png')}
             />
           </View>
-          <Text style={styles.QuesStyle}>
-            How are you related to the patient?
+          <Text
+            style={{
+              fontSize: 38,
+              fontWeight: 'bold',
+              marginLeft: '10%',
+              color: '#027E97',
+            }}>
+            Reason for the visit?
           </Text>
-          <TextInput
-            placeholder="Type here"
-            value=""
-            style={styles.InputStyle}
-          />
-          <Text style={styles.QuesStyle}>
-            Where can this provider call you for follow-up, If needed?
-          </Text>
-          <TextInput
-            placeholder="Contact Number"
-            value=""
-            style={styles.InputStyle}
-          />
-          <Text style={styles.QuesStyle}>
-            Invite guest(s) to join your visit?
-          </Text>
-          <TextInput
-            placeholder="Optional"
-            value=""
-            style={styles.InputStyle}
-          />
-
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              paddingHorizontal: 20,
+            }}>
+            {this.state.symptomps1.map((u, i) => {
+              return (
+                <TouchableHighlight
+                  onPress={() => {
+                    this.pressbtn(u);
+                  }}
+                  style={[
+                    styles.btnStyle,
+                    {
+                      marginTop: 30,
+                      backgroundColor:
+                        this.state.selectedSymptom == u ? '#FF7A59' : '#fff',
+                      width: 'auto',
+                      paddingHorizontal: 25,
+                    },
+                  ]}>
+                  <Text
+                    style={{
+                      width: '100%',
+                      fontSize: 16,
+                      color:
+                        this.state.selectedSymptom == u ? '#fff' : '#027E97',
+                      textAlign: 'center',
+                    }}>
+                    {u}
+                  </Text>
+                </TouchableHighlight>
+              );
+            })}
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              paddingHorizontal: 20,
+            }}>
+            {this.state.symptomps2.map((u, i) => {
+              return (
+                <Button
+                  onPress={() => {
+                    this.pressbtn(u);
+                  }}
+                  style={[
+                    styles.btnStyle,
+                    {
+                      marginTop: 30,
+                      backgroundColor:
+                        this.state.selectedSymptom == u ? '#FF7A59' : '#fff',
+                      width: '45%',
+                      paddingHorizontal: 10,
+                    },
+                  ]}>
+                  <Text
+                    style={{
+                      width: '100%',
+                      fontSize: 16,
+                      color:
+                        this.state.selectedSymptom == u ? '#fff' : '#027E97',
+                      textAlign: 'center',
+                    }}>
+                    {u}
+                  </Text>
+                </Button>
+              );
+            })}
+          </View>
+          <View>
+            {this.state.symptomps3.map((u, i) => {
+              return (
+                <Button
+                  onPress={() => {
+                    this.pressbtn(u);
+                  }}
+                  style={[
+                    styles.btnStyle,
+                    {
+                      marginTop: 30,
+                      backgroundColor:
+                        this.state.selectedSymptom == u ? '#FF7A59' : '#fff',
+                      width: '90%',
+                    },
+                  ]}>
+                  <Text
+                    style={{
+                      width: '100%',
+                      fontSize: 16,
+                      color:
+                        this.state.selectedSymptom == u ? '#fff' : '#027E97',
+                      textAlign: 'center',
+                    }}>
+                    {u}
+                  </Text>
+                </Button>
+              );
+            })}
+          </View>
+          <Button
+            onPress={() => {
+              this.pressbtn('others');
+            }}
+            style={[
+              styles.btnStyle,
+              {
+                marginTop: 30,
+                backgroundColor:
+                  this.state.selectedSymptom == 'other' ? '#FF7A59' : '#fff',
+                width: '90%',
+              },
+            ]}>
+            <Text
+              style={{
+                width: '90%',
+                fontSize: 16,
+                color:
+                  this.state.selectedSymptom == 'others' ? '#fff' : '#027E97',
+                paddingLeft: 20,
+              }}>
+              Others
+            </Text>
+            <Text
+              style={{
+                width: '10%',
+                fontSize: 30,
+                color: '#027E97',
+              }}>
+              +
+            </Text>
+          </Button>
           <View style={styles.nextBtn}>
             <Svg
               width="13"
@@ -124,13 +242,13 @@ class Question2Screen extends Component {
             </Svg>
           </View>
           <View style={{width: '80%', alignSelf: 'center', marginTop: 10}}>
-            <Text style={{fontSize: 16, color: '#FFFFFF'}}>Questions 1/5</Text>
+            <Text style={{fontSize: 16, color: '#FFFFFF'}}>Questions 2/5</Text>
             <View style={{marginTop: 15, flexDirection: 'row'}}>
               <View
-                style={{height: 5, width: '20%', backgroundColor: '#027E97'}}
+                style={{height: 5, width: '40%', backgroundColor: '#027E97'}}
               />
               <View
-                style={{height: 5, width: '80%', backgroundColor: '#D5E9F4'}}
+                style={{height: 5, width: '60%', backgroundColor: '#D5E9F4'}}
               />
             </View>
           </View>
@@ -140,25 +258,17 @@ class Question2Screen extends Component {
   }
 }
 
-export default Question2Screen;
+export default Question1Screen;
 
 const styles = StyleSheet.create({
-  QuesStyle: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    width: '100%',
-    paddingHorizontal: '15%',
-    color: '#027E97',
-    textAlign: 'left',
-    marginTop: 20,
-  },
-  InputStyle: {
-    borderBottomColor: 'white',
-    borderBottomWidth: 1,
-    width: '70%',
+  btnStyle: {
+    // width: 'auto',
     alignSelf: 'center',
-    fontSize: 16,
-    marginTop: 10,
+    borderRadius: 15,
+    height: 39,
+    marginTop: 20,
+    elevation: 0,
+    justifyContent: 'center',
   },
   nextBtn: {
     width: 42,
@@ -168,7 +278,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 25,
+    marginTop: 35,
     marginLeft: 'auto',
     marginRight: '10%',
   },
