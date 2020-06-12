@@ -1,11 +1,11 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, Text, Image, StyleSheet, TextInput} from 'react-native';
 import RadialGradient from 'react-native-radial-gradient';
 import {Button} from 'native-base';
 import Svg, {Path} from 'react-native-svg';
 
-class Question1Screen extends Component {
+class Question2Screen extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -63,111 +63,34 @@ class Question1Screen extends Component {
                 marginRight: 30,
               }}
               resizeMode="contain"
-              source={require('../assets/pic2.png')}
+              source={require('../assets/pic3.png')}
             />
           </View>
-          <Text
-            style={{
-              fontSize: 38,
-              fontWeight: 'bold',
-              marginLeft: '10%',
-              color: '#027E97',
-            }}>
-            Who is the {'\n'}patient?
+          <Text style={styles.QuesStyle}>
+            How are you related to the patient?
           </Text>
-          <Button
-            onPress={() => {
-              this.pressbtn(1);
-            }}
-            style={[
-              styles.btnStyle,
-              {
-                marginTop: 30,
-                backgroundColor:
-                  this.state.selectedIndex == 1 ? '#FF7A59' : '#fff',
-              },
-            ]}>
-            <Text
-              style={{
-                width: '100%',
-                fontSize: 16,
-                color: this.state.selectedIndex == 1 ? '#fff' : '#027E97',
-                paddingLeft: 20,
-              }}>
-              MYSELF
-            </Text>
-          </Button>
-          <Button
-            onPress={() => {
-              this.pressbtn(2);
-            }}
-            style={[
-              styles.btnStyle,
-              {
-                backgroundColor:
-                  this.state.selectedIndex == 2 ? '#FF7A59' : '#fff',
-              },
-            ]}>
-            <Text
-              style={{
-                width: '100%',
-                fontSize: 16,
-                color: this.state.selectedIndex == 2 ? '#fff' : '#027E97',
-                paddingLeft: 20,
-              }}>
-              MOTHER
-            </Text>
-          </Button>
-          <Button
-            onPress={() => {
-              this.pressbtn(3);
-            }}
-            style={[
-              styles.btnStyle,
-              {
-                backgroundColor:
-                  this.state.selectedIndex == 3 ? '#FF7A59' : '#fff',
-              },
-            ]}>
-            <Text
-              style={{
-                width: '100%',
-                fontSize: 16,
-                color: this.state.selectedIndex == 3 ? '#fff' : '#027E97',
-                paddingLeft: 20,
-              }}>
-              FATHER
-            </Text>
-          </Button>
-          <Button
-            onPress={() => {
-              this.pressbtn(4);
-            }}
-            style={[
-              styles.btnStyle,
-              {
-                backgroundColor:
-                  this.state.selectedIndex == 4 ? '#FF7A59' : '#fff',
-              },
-            ]}>
-            <Text
-              style={{
-                width: '90%',
-                fontSize: 16,
-                color: this.state.selectedIndex == 4 ? '#fff' : '#027E97',
-                paddingLeft: 20,
-              }}>
-              OTHERS
-            </Text>
-            <Text
-              style={{
-                width: '10%',
-                fontSize: 30,
-                color: '#027E97',
-              }}>
-              +
-            </Text>
-          </Button>
+          <TextInput
+            placeholder="Type here"
+            value=""
+            style={styles.InputStyle}
+          />
+          <Text style={styles.QuesStyle}>
+            Where can this provider call you for follow-up, If needed?
+          </Text>
+          <TextInput
+            placeholder="Contact Number"
+            value=""
+            style={styles.InputStyle}
+          />
+          <Text style={styles.QuesStyle}>
+            Invite guest(s) to join your visit?
+          </Text>
+          <TextInput
+            placeholder="Optional"
+            value=""
+            style={styles.InputStyle}
+          />
+
           <View style={styles.nextBtn}>
             <Svg
               width="13"
@@ -217,16 +140,25 @@ class Question1Screen extends Component {
   }
 }
 
-export default Question1Screen;
+export default Question2Screen;
 
 const styles = StyleSheet.create({
-  btnStyle: {
-    width: '80%',
-    alignSelf: 'center',
-    borderRadius: 15,
-    height: 58,
+  QuesStyle: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    width: '100%',
+    paddingHorizontal: '15%',
+    color: '#027E97',
+    textAlign: 'left',
     marginTop: 20,
-    elevation: 0,
+  },
+  InputStyle: {
+    borderBottomColor: 'white',
+    borderBottomWidth: 1,
+    width: '70%',
+    alignSelf: 'center',
+    fontSize: 16,
+    marginTop: 10,
   },
   nextBtn: {
     width: 42,
@@ -236,7 +168,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 35,
+    marginTop: 25,
     marginLeft: 'auto',
     marginRight: '10%',
   },
