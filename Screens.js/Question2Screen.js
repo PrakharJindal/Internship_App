@@ -11,9 +11,9 @@ class Question1Screen extends Component {
     super(props);
     this.state = {
       selectedSymptom: '',
-      symptomps1: ['Cough', 'Cold', 'COVID'],
-      symptomps2: ['Sore Throat', 'Influenza (Flu)'],
-      symptomps3: ['Prescription Refill', 'Urinary Tract Infection (UTI)'],
+      reasons1: ['Cough', 'Cold', 'COVID'],
+      reasons2: ['Sore Throat', 'Influenza (Flu)'],
+      reasons3: ['Prescription Refill', 'Urinary Tract Infection (UTI)'],
     };
   }
 
@@ -81,7 +81,7 @@ class Question1Screen extends Component {
               justifyContent: 'space-around',
               paddingHorizontal: 20,
             }}>
-            {this.state.symptomps1.map((u, i) => {
+            {this.state.reasons1.map((u, i) => {
               return (
                 <TouchableHighlight
                   onPress={() => {
@@ -117,7 +117,7 @@ class Question1Screen extends Component {
               justifyContent: 'space-around',
               paddingHorizontal: 20,
             }}>
-            {this.state.symptomps2.map((u, i) => {
+            {this.state.reasons2.map((u, i) => {
               return (
                 <Button
                   onPress={() => {
@@ -148,7 +148,7 @@ class Question1Screen extends Component {
             })}
           </View>
           <View>
-            {this.state.symptomps3.map((u, i) => {
+            {this.state.reasons3.map((u, i) => {
               return (
                 <Button
                   onPress={() => {
