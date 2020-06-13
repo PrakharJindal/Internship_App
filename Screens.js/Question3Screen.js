@@ -93,6 +93,7 @@ class Question3Screen extends Component {
                 justifyContent: 'space-around',
                 width: '80%',
                 alignSelf: 'center',
+                marginTop: 30,
               }}>
               <Button
                 style={[
@@ -193,14 +194,14 @@ class Question3Screen extends Component {
 
             <View style={{width: '80%', alignSelf: 'center', marginTop: 10}}>
               <Text style={{fontSize: 16, color: '#FFFFFF'}}>
-                Questions 2/5
+                Questions 3/5
               </Text>
               <View style={{marginTop: 15, flexDirection: 'row'}}>
                 <View
-                  style={{height: 5, width: '40%', backgroundColor: '#027E97'}}
+                  style={{height: 5, width: '60%', backgroundColor: '#027E97'}}
                 />
                 <View
-                  style={{height: 5, width: '60%', backgroundColor: '#D5E9F4'}}
+                  style={{height: 5, width: '40%', backgroundColor: '#D5E9F4'}}
                 />
               </View>
             </View>
