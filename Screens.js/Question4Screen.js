@@ -175,20 +175,20 @@ class Question4Screen extends Component {
               </View>
               <View style={{width: '80%', alignSelf: 'center', marginTop: 10}}>
                 <Text style={{fontSize: 16, color: '#FFFFFF'}}>
-                  Questions 1/5
+                  Questions 4/5
                 </Text>
                 <View style={{marginTop: 15, flexDirection: 'row'}}>
                   <View
                     style={{
                       height: 5,
-                      width: '20%',
+                      width: '80%',
                       backgroundColor: '#027E97',
                     }}
                   />
                   <View
                     style={{
                       height: 5,
-                      width: '80%',
+                      width: '20%',
                       backgroundColor: '#D5E9F4',
                     }}
                   />
