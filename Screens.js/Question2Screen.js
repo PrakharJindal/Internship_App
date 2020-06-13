@@ -6,7 +6,7 @@ import {Button} from 'native-base';
 import Svg, {Path} from 'react-native-svg';
 import {TouchableHighlight} from 'react-native-gesture-handler';
 
-class Question1Screen extends Component {
+class Question2Screen extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -258,7 +258,7 @@ class Question1Screen extends Component {
   }
 }
 
-export default Question1Screen;
+export default Question2Screen;
 
 const styles = StyleSheet.create({
   btnStyle: {
