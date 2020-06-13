@@ -10,6 +10,7 @@ import Question1Screen2 from './Question1Screen2';
 import Question2Screen from './Question2Screen';
 import Question3Screen from './Question3Screen';
 import Question4Screen from './Question4Screen';
+import Question5Screen from './Question5Screen';
 const Stack = createStackNavigator();
 
 class index extends Component {
@@ -25,7 +26,8 @@ class index extends Component {
         {/* <Stack.Screen name="Question1Screen2" component={Question1Screen2} /> */}
         {/* <Stack.Screen name="Question2Screen" component={Question2Screen} /> */}
         {/* <Stack.Screen name="Question3Screen" component={Question3Screen} /> */}
-        <Stack.Screen name="Question4Screen" component={Question4Screen} />
+        {/* <Stack.Screen name="Question4Screen" component={Question4Screen} /> */}
+        <Stack.Screen name="Question5Screen" component={Question5Screen} />
         {/* <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="Calendar" component={CalendarScreen} />
         <Stack.Screen name="SignUpStep1Screen" component={SignUpStep1Screen} />
